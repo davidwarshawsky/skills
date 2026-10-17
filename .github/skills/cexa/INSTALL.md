@@ -1,0 +1,83 @@
+# Installing `cexa`
+
+The `cexa` CLI provides agents and developers with dynamic, token-efficient access to the remote Exa MCP Server (`https://mcp.exa.ai/mcp`).
+
+It has **zero third-party dependencies** (uses only standard library Python 3) and runs seamlessly on Windows, macOS, and Linux.
+
+---
+
+## 1. Prerequisites: API Key
+
+`cexa` requires the `EXA_API_KEY` environment variable:
+
+```bash
+export EXA_API_KEY="your-exa-api-key"
+```
+
+On Windows PowerShell:
+```powershell
+$env:EXA_API_KEY="your-exa-api-key"
+```
+
+---
+
+## 2. Quick Install (Windows PowerShell)
+
+```powershell
+.\install.ps1
+```
+
+This script:
+- Configures `PYTHONIOENCODING=utf-8` at the user level (persistent across sessions)
+- Sets it for the current session (works immediately)
+- Installs cexa via `uv tool`
+- Verifies the installation
+- Checks for the `EXA_API_KEY` environment variable
+
+---
+
+## 3. Manual Installation Options
+
+### Option A: Install via `uv` (Recommended)
+If `uv` is installed, install `cexa` as a globally isolated tool:
+```bash
+uv tool install git+https://github.com/davidwarshawsky/cexa
+```
+
+To update later:
+```bash
+uv tool upgrade cexa
+```
+
+---
+
+### Option B: Run on the fly with `uvx` (No installation needed)
+If you don't want to install anything permanently, run `cexa` on demand via `uvx`:
+```bash
+uvx --from git+https://github.com/davidwarshawsky/cexa cexa --help
+```
+
+---
+
+### Option C: Install via `pipx`
+If using `pipx`:
+```bash
+pipx install git+https://github.com/davidwarshawsky/cexa.git
+```
+
+---
+
+### Option D: Install via `pip`
+```bash
+pip install git+https://github.com/davidwarshawsky/cexa.git
+```
+
+---
+
+### Option E: Local Development / Clone
+Clone the repository and install in editable mode:
+```bash
+git clone https://github.com/davidwarshawsky/cexa.git
+cd cexa
+pip install -e .
+```
